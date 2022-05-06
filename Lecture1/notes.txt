@@ -1,0 +1,7 @@
+Compile time error -> 
+                    The program will not compile if there is these kind of error
+Runtime Error -> 
+                The program will compile but it will not do what we expect it to do
+
+Warning -> 
+            Compilation will succeed but they might create issues
