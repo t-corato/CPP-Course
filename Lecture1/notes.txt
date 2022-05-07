@@ -5,3 +5,10 @@ Runtime Error ->
 
 Warning -> 
             Compilation will succeed but they might create issues
+
+
+Statements in C++ have to end with ;
+Statements are executed from top to bottom
+
+
+Functions -> needs to be defined before we call it
