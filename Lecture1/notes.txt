@@ -12,3 +12,15 @@ Statements are executed from top to bottom
 
 
 Functions -> needs to be defined before we call it
+
+EXECUTION MODEL
+is in binary because it can be easily understood by the CPU
+
+The binary will be loaded in RAM, then the CPU can run it
+if there is a Function it rememebr the pointer to where it was 
+
+C++ core language vs Standard Library vs STL
+
+core feature -> basic bilding block that makes up the c++ language
+Standard Library -> a st of ready to use, higly specialised components 
+STL -> part of standard libraries but it's a collection of container types 

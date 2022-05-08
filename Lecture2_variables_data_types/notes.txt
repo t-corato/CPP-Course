@@ -1,0 +1,54 @@
+8 bit -> byte
+Number systems
+1 - Base 10 -> the usual one that we use
+2 - Binary made up of ones and zeros (each digit is a power of 2)
+    represented with 0b...
+3 - Hexadecimal -> from 1 - 9 and a - f , each digit is a power of 16
+                    usually represented with 0x...
+                    each digit is used to represents groups of 4 bits
+4 - Octal -> 1 - 7, powers of 8, represented with a 0 before
+
+Int -> 4 bytes if you put a fractional number it will remove the part after the .
+
+we can ask for the size of any type using sizeof(...)
+
+
+INTEGERS MODIFIERS
+all int are signed int, we can use unsigned int if we want to discard the signed
+
+short -> 2 bytes can also be signed or unsigned
+
+long -> 4/8 bytes, can be used if the number is too large for an int
+
+long long -> always 8 bytes
+
+FRACTIONAL numb
+
+float -> 4 bytes, 7 precision
+double -> 8 bytes, 15 precision
+
+long double -> 12 bytes, > double precision (possible that is the same according to the compiler)
+                    Need to suffix with L
+
+if we pass an int that is more that 7 digits to a float it will chunk it, a possible large issue (will not tell us at compiling)
+we can also use scientific notation double number {1.924e8};
+
+with floating we can devide by 0, we get infinity
+
+0.0/0.0 = NaN
+
+BOOLEANS 
+
+true/false
+
+mainly used to take decisions 
+
+Char and text
+
+char -> is a single character occupies 1 byte
+        follows the ASCII encoding 
+
+auto -> the compiler will interpret the type by itself
+
+ASSIGNMENT
+We can reassing a variable after we have declared it 
