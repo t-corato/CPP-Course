@@ -1,0 +1,61 @@
+Basic Operations
++ - * same as usual 
+/ -> division BUT
+
+if we devide integers we end up with an integer, no decimals
+% modulus -> remainder 
+
+Precedence and Associativity 
+
+the rules for operators -> * and / come before + and -
+
+Associativity -> which direction/ which order 
+We can use the precedence table to know 
+
+Prefix/postfix addition/subtraction
+
+if we want to add 1 to a we can do a++ 
+we can also do ++a, the difference is that this does the addition immediately, before we get the value
+
+Compound operators
+value += 5 or -= or *= or /= or %=
+we can use it to reassign the value to (eg.) value + 5 
+
+Relational operators
+
+operators that we use to compare things
+the comparison can be > < >= <= == != (like in Python)
+
+Logical operators
+
+&& -> and (both true for getting true)
+
+|| -> or (just one true for true)
+
+! -> negate, if true -> false
+             if false -> true
+
+OUTPUT FORMATTING
+<ios> and <iomanip>
+std::endl; adds a newline we can also use \n at the end of our str
+std::flush when the buffer is full it sends all the data to the terminal simultaneusly
+std::setw sets a width for any form of data that we want to OUTPUT
+std::boolalpha forces the boolean output to true/false instead of 1/0
+std::showpos will show the positive number as +8 intead of 8
+std::dec/std::hex/std::oct will show in the format that we choose (cannot be done with floats)
+std::setprecision(n) will output the number at the precision that we choose (limited by the type ofc)
+
+Math function 
+std::floor
+std::abs 
+std::exp
+std::pow(num, exponential)
+std::log -> base e
+std::log10 -> base 10
+std::round
+std::sqrt
+
+Write a program that reads in the length and width and height of a box and computes the base area and volume using the following formulas:
+
+base_area = width * length
+volume = base_area * height
