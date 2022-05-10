@@ -1,0 +1,51 @@
+Literals 
+It menas that some values will be stored in the computers memory litterally
+(eg. an int 10 will be stored as 10 in memory)
+
+We are coping the values from the literals and putting them in variables
+so we can use them for our program
+
+example for unsigend we put a u at the end and for long an l (or ll for long long)
+0x for hex / 0b for binary
+
+Constant 
+A variable you can diclare but you cannot change afterwards
+
+you prefix it with the keyword 
+const 
+
+we should always initialise a const, else there will be a compiler error 
+
+the const is applied on the variable, not in memory, is at the C++ level
+
+We should use const every time we can
+
+
+Constant Expressions
+Is an expression that is going to be evaluated at compile time
+
+constexpr -> constant that may be evaluated at compile time or runtime
+We can move the heavy computations at compile time 
+
+The heavy computations are done at compile time and the users that run the application can 
+benefit from the results of the computation done at compile time
+
+constexpr are also constant so we cannot reassing them
+
+static_assert(condition)  use to check at compile time if a condition is valid
+
+
+constinit (introduced in C++20)
+
+if you try to initialise it with something that cannot be evaulated at compile time
+it will throw a compiler error
+(the variable should be const initialised)
+
+constinit deals with variables outside the scope of the main function 
+(more on this later)
+
+continit can be initialised with literals or consts
+
+const and constinit ca be conbined but const and constexpr cannot 
+
+constinit does not imply that the variable is constant, just that the compiler enforeces initialisation
