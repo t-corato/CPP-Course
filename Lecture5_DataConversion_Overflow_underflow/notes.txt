@@ -1,0 +1,37 @@
+all variables in an expression should have the same tyoe, 
+but the compiler does it for you if it's possible
+
+Overflow -> store more than a data tyoe can hold
+
+IMPLICIT DATA CONVERSIONS
+
+All the operants should be of the same types, the compiler does implicit CONVERSIONS
+it always goes from the smallest type to the largest type (eg int to double)
+
+Narrowing conversion instead happens when we chop off some parts of the
+variable (eg from double to int, drop the decimals)
+
+EXPLICIT DATA CONVERSIONS
+
+some times we need to do the conversion ourselves 
+
+implicit cast: use static_cast<type to cast>(var)
+
+we can also use old style c-cast (type to cast)(var)
+but this is not really safe
+
+static_cast is very clear, easier to search in code and if the types 
+are not compatible we will get a compiler error 
+
+OVERFLOW
+if we want to put much more than what can fit in a variable 
+when we get an overflow we get garbage values, this is because the PC will reset 
+all the bits after we reach the limit of the type we are using 
+
+
+UNDERFLOW
+if we want to put less than what can fit in the variable
+works the same way, but the bits will be reset in the opposite direction (like 
+when we want to represent a negative in an unsigned )
+
+In general be mindful of the limits of your data type
