@@ -1,0 +1,19 @@
+Varaible Lifetime 
+THe period of time in which a variable is going to be alive in memory 
+It becomes alive when you declare it and it is killed from memory at some point
+
+When a variable is killed is decided by its storage duration
+- local -> dies at the end of the block 
+- static -> dies when program ends
+- dynamic -> you decide when it dies 
+
+Variable Scope
+A region in your code where a variable name can be mentioned.
+
+Trying to use a variable out of it's scope will result in a compiler error
+
+ Global variable -> accessible everywhere in the code 
+ Local variable -> accessible in the block that is defined in
+
+ Nested scope -> a variable defined inside {} is not usable outside but the opposite is possible 
+ 
