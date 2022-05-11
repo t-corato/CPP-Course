@@ -1,0 +1,41 @@
+Operators that allows us to manipulate data at the bit level
+
+Printing integers in binary
+we have to include bitset 
+
+cout << bitset<n_bits>(data)
+
+Shift Operators`
+Allows us to shift bits left or right
+Important: if data is lost as a result of shifting bits left (<<) or right (>>)
+we cannot get the data back by doing the reverse operation, the data is lost permanently
+
+Bit shifting is only support4ed for integral types (int, char, ...)
+
+Bitwise logical Operators
+& - > and , if both are 1, we get 1 else 0
+| -> or, if one or both are 1 get one, else 0
+~ -> not, get the opposite of a bit (if 0, 1, if 1, 0)
+^ -> xor, get 1 if only one is 1 else 0
+
+Compoud Bitwise Assignment ooperators
+Work on the variagle and put the result back in the same variable
+>>= -> right shift and assign
+<<= -> left shift and assign
+|= -> or and assign
+&= -> and and assign
+^= -> xor and assign
+
+
+MASKS
+A way with which we can highlight or shadow bits iin a byte
+this would allow us to do a set of operations only on certain bits of the byte
+
+we might want to:
+- set bit positions (making it 1) -> doing an |= with mask
+- reset bit positions (going from 1 to 0) -> doing an &= (~mask)
+- check bit positions (if 0 or 1) -> doing an (& mask) >> n, where n allows us to push the bit to the initial 
+                                                          position, so we can interpret it as an int and see if 
+                                                          it was 0 or 1
+- toggle bit positions (if 0 -> 1 if 1 -> 0) -> doing a ^ (mask)
+
