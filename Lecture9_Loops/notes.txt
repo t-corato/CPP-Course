@@ -1,0 +1,108 @@
+FOR LOOPS
+Pilars of for loops
+        - Iterator
+        - Starting point
+        - Test (controls when loop stops)
+        - Increment (Decrement)
+        - Loop body
+
+    for (unsigned int i{}; i < 10; i++){
+        do something
+    }
+
+    Multiple declarations 
+
+        for (size_t i{0}, x{5}, y{22}; y > 15; ++i, x+=5, y-=1){
+            do something;
+        } 
+
+    this allows to have multiple declaration in the initializer
+
+Comma Operator 
+    The comma operator combines two or more 
+    expressions into a single expression, where the 
+    value of the operation is the value of it's right operand
+
+    eg.
+        int result = (number1 *= ++increment, number2 - (++increment), number3 += ++increment)
+    
+    the result of this is going to be the same as number3
+
+Range based for loops 
+
+        int bag_of_values [] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        for (int value : bag_of_values){
+            do something;
+        }
+    
+    this is going to do something for each value in the bag_of_values
+
+
+WHILE LOOPS
+    Pilars of while loops
+        - Iterator
+        - Starting point
+        - Test (controls when loop stops)
+        - Increment (Decrement)
+        - Loop body
+    
+    Same as for loop, the difference is that 
+        - The iterator is defined on the outside 
+        - Only the test goes in the () after the while
+        - The increment is done inside the body, at the end
+
+  eg. 
+        const unsigned int COUNT {10};
+
+        unsigned int i {0};
+
+        while (i < COUNT){
+            do something;
+            ++i;
+        }
+
+std:cout will slow dow your loop quite a lot
+
+Do - while loops
+
+        do {
+            do something
+            i++;
+        }
+        while(i < COUNT);
+    
+    this does the thing first and checks for the condition later
+
+
+Infinite loops
+
+    we can omit the test condition for a for loop
+
+    we can write while(true) for while and do-while loops
+
+    Generally it's a problem but some time we might want it
+
+
+Decrementing loops
+
+    we can just write i-- or --i
+
+    the condition then must be reversed 
+
+Nested Loops
+	is possible to nest loops
+
+
+Break -> breaks out of the loop and causes execution of the statement following the loop
+
+Continue -> allows to skip one iteration and move to the next one
+
+Continue in a while loop might cause the incrementing / Decrementing not to happen and 
+result in an infinite loop
+
+Range base for loop with initializer
+
+    for (type initalizer; type value : array){
+        do stuff
+    }
