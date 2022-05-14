@@ -1,0 +1,144 @@
+Flow control 
+Conditional programming 
+    if / else / switch / ternary operator
+
+If statement
+    allows to do something based on a condition being true or false 
+
+    else : do something else 
+
+    it's also possible to nest conditions
+    also is possible to combine conditions
+
+else if 
+    allows to test for multiple conditions 
+
+switch 
+    testing for several conditions but more compactly 
+
+    Example: 
+    switch (tool) {
+
+        case Pen: {
+            cout << "Active tool is pen" << endl;
+        }
+        break;
+
+        case Marker: {
+            cout << "Active tool is marker" << endl;
+        }
+        break;
+
+        default: {
+            cout << "Can't match any tool" << endl;
+        }
+    }
+
+    if break is not there then it would execute everything even after our 
+    condition is met
+
+    condtion can only be integral and enum
+
+short circuit 
+
+    AND -> if one of the operand is false, the result is false. 
+            Put operands more likely to be false first  
+    OR -> if one of the operand is true, the result is true. 
+            Put operands more likely to be true first  
+
+    Computing some operands in the expression can be expensive, if short 
+    circuit is possible, such expensive computations can be avoided 
+
+integral logic conditions
+
+    We can use integers inside our if statements as if they were booleans
+
+    Any number that is different than 0 is going to be interpreted as a true
+    0 is going to be interpreted as a false 
+
+Ternary Operators 
+
+        result = (condition) ? option1 : option2;
+
+    is the same as writing:
+
+        if (condition) {
+            result = option1;
+        } 
+        else {
+            result = option2;
+        }
+
+    option1 and 2 should be of the same type or of convertible type 
+
+If constexpr 
+
+    allows us to increase the compile time computations
+
+        if constexpr(condition){
+            do something
+        }
+        else {
+            do something else
+        }
+    
+    it only works if the comdition can be evaluated at compile time
+
+    the condition that fails will not even be included in the binary file 
+
+If initializer
+
+    useful to pass some data to our if statement
+
+    Example:
+        if (int high_speed {33}; go){
+            if (high_speed > 5){
+                cout << "Slow down!" << endl;
+            }
+            else {
+                cout << "All good!" << endl;
+            }
+        }
+        else {
+            cout << "high_speed : " << high_speed << endl;
+            cout << "Stop" << endl;
+        }
+
+    We have to initialize the variable in place 
+    It's scoped inside our if else block
+
+switch initializer
+
+    same as if initializer
+
+    switch (type var {value}; condition){
+        case Case1 : {
+            do something
+        }
+        break;
+
+        case Case2 : {
+            do something2
+        }
+        break;
+
+        default: {
+            do something else 
+        }
+        break;
+    }
+
+
+The if statement is scoped by itself
+
+The switch block scope: 
+    all the switch block has the same scope,  cases can share variables
+    with each others  
+
+    switch is one giant scope
+
+    we can declare variables inside the case but not assign them, 
+    if we want to use them in other cases 
+
+    since it's extremely weird is better not to declare variable inside switch blocks 
+    
