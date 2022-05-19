@@ -1,0 +1,62 @@
+Arrays allow us to manipulate a collection of data types
+
+We can access the elements using the index
+
+eg of an array
+
+    int scores[10]; // Define an array of 10 integers 
+
+    scores[0] // access the first element in the array
+
+assign data to an array: 
+
+    scores[0] = 3; // assing value 3 to first element in array
+
+size of an array
+
+    the size of an array can be foud by using std::size(array)
+    it is allocated at runtime so if it changes we can find it again
+
+    before cpp 17:
+        sizeof(array)/sizeof(array[0]) -> this would give us the len of array
+
+    for a for loop we can simpli do 
+        for (type element : array){
+            do something;
+        }
+
+char Arrays
+    can be printed directly to the array but to be sure we need to add
+    "\0" at the end because it cout can only print cpp strings
+
+    if instead we use double quotes we can initialize it as a string 
+
+Bounds of array
+
+    if we try to go outside the bounds we might modify data that is used by other 
+    parts of the program/other programs 
+
+    c++ allows you to do it even if you shouldn't touch it
+
+    Don't go over!!
+
+Generate Random Numbers 
+
+    std::rand() // generates a number between 0 and RAND_MAX
+
+    if I want a number between [0 - max_of_range] 
+    I can do std::rand() % max_of_range + 1
+
+    if I want it not to start from 0 I can do 
+    (std::rand() % max_of_range - start + 1) + start
+
+Multi dimentional arrays:
+    data is still stored into linear, but the compiler will do the mapping
+    we can use double indexing [0][0] [0][1] ..... rows are the first index
+    column is the second
+    std::size(array) -> n_rows
+    std::size(array[0]) -> n_columns
+
+    it can have more than 2 dimentions, each dimention will add a []
+
+    
