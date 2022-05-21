@@ -1,0 +1,209 @@
+What is a pointer 
+    Each variable has an address in memory, 
+    using * we can grab this address, also known as pointer
+
+    eg.
+    int var = 5;
+    int *pvar = &var
+
+Declaring and using pointers
+    important : only store the address to variable of the right type
+    all pointers are the same size, does not matter waht type they point to
+
+    & : the adress of an operator
+
+Pointer to char
+
+    you can do the same as always BUT
+    is also possible to do 
+        char *p_message {"Hello World!"};
+    
+    this is how strings work as well
+    the p_message will store the address of the first char and treat the rest as an array
+
+const Pointer and Pointer to const
+
+    non const pointer:
+        - We can modify the value that the pointer is pointing to
+        - We can change the pointer to point somewhere else
+    
+    pointer to const:
+        - can't modify var through pointer
+        syntax:
+            const int *p_var
+
+    const pointer:
+        - can't make pointer point to somewhere else
+        syntax:
+            int *const p_var
+
+    const pointer to const:
+        - can't change the pointer
+        - can't change the data in the pointer 
+        syntax:
+            const int* const p_var
+
+Pointers vs arrays
+    The name of the array can be treated like a pointer to the first
+    element of the array
+
+    Difference:
+        - cannot make the array name point somewhere else
+        - cannot use a pointer to get the size of the array with std::size
+
+Swapping array data
+    could be done with a temp array but very slow
+
+    We can do it with pointers:
+        we have 2 arrays (arr0 and arr1)
+
+        int *p_arr0 = arr0;
+        int *p_arr1 = arr1;
+
+        int* temp;
+
+        temp = p_arr1;
+        p_arr1 = p_arr0;
+        p_arr0 = temp;
+    
+    now we can use the pointers (not the array, else compiler error)
+    to access the data
+
+
+POINTER ARITHMETIC
+
+    what is it:
+    a set of operations we can do on the pointers representing the 
+    array to manipulate the array. These operations can include navigating 
+    from element to element, computing the distance between elements
+    and comparing addresses of elements
+
+    Navigation  
+
+        incrementing/decrementing on the pointer, is going to move the
+        pointer address by the size of the type pointed to by the pointer
+
+        doing pointer + 1:
+        increasing the pointer by the size of the data type that points to
+        (so it points the next data type)
+
+    Distance between elements
+
+        the distance is going to be in the type that we are using (so p_arr[8] - p_arr[0])
+        is 8, not 32 like in bytes 
+
+        std::ptrdiff_t is a type for pointer Difference
+    
+    comparing pointers 
+        we can do logical operator (<, > ...)
+
+    Swap data using pointer ARITHMETIC
+
+PROGRAM MEMORY MAP
+    Virtual memory:
+        - A trick that fools your progrma into thinking it is the only program running on 
+          your OS, and all memory resources belong to it.
+        - Each program is abstracted into a process and each process has access to the memory range 
+          0 - [(2^n) - 1] where n is 32 in a 32 bit system and 64 on a 64 bit system
+
+    Not all the program is loaded in real memory by the CPU and MMU. Only the parts that are about
+    to be executed are loaded, making effective use of real memory.
+
+    MMU deals with transforming the idea that our program has of the memory to the actual memory
+    The MMU is a standard format of the OS, this is why you cannot run a Linux executable on Windows
+
+    The memory map is devided in 
+        system
+        Stack -> local var, function calls...
+        Heap   -> additional memory that can be queried for at runtime
+        data
+        Text
+    
+DYNAMIC MEMORY ALLOCATION
+     Use the Heap storage 
+
+     In the heap the developer is in full controll of when memory is allocated and when it's released
+     Lifetime is controlled explicitly through new and delete operations
+
+     How to initialize a pointer with DYNAMIC memory
+
+            int *p_number{nullptr};
+            p_number = new int; // Dynamically allocate space for a single int on the heap
+
+            *p_number = 77; // Writing into Dynamically allocated memory
+
+            delete p_number; // return the memory to the OS
+
+            p_number = nullptr; // so that anyone that reads the code knows that this is a null pointer now
+
+Dangling pointers
+    A pointer that does not point to a valid memory address. Trying to dereference and use a dangling pointer 
+    will result in undefined behaviour.
+
+    3 kind of dangling pointers:
+        - Uninitialised pointers
+        - Deleted pointers
+        - Multiple pointers pointing to the same memory
+
+    Solutions:
+        - initialize your pointers 
+        - reset pointers after delete (to nullptr)
+        - For multiple pointers to the same address make sure the owner pointer is very clear   
+
+
+When new fails
+    - it's very rare but it might happen
+    How to hande it:
+        - Exception mechanism
+            try{
+                code that could cause problems;
+            }
+            catch{std::exception& ex}{
+                cout<< ex.what() << endl;
+            }
+        
+        ex.what() throws the exception and tells us what it is
+
+    
+    - Using std::nothrow
+
+        int *lots_of_int {new(std::nothrow) int[1000000000]};
+
+        if it fails will return a nullptr
+        
+Null pointer safety:
+    is possible to test if a pointer is null by doing:
+        if(pointer){
+            do something
+        }
+        else{
+            do something else
+        }
+    the if pointer will be false if pointer is nullptr and true otherwise
+
+    it is ok to call delete on a nullptr
+
+Memory Leaks
+    When we lose access to memory that is dynamically allocated
+    (lose the pointer)
+
+    - like if we reassing a pointer that we created dynamically to an other variable
+    - or if we assign memory inside a loop and we don't free it inside the scope of the loop
+
+Dynamic arrays
+    Arrays are allocated on the heap with the new operator.
+    We can also use the std::nothrow version of new
+
+    example:
+        double *p_salaries {new double[size]};
+
+        int *p_students {new(std::nothrow) int[size]{}};
+
+    we than free the momory using 
+        delete[] p_scores;
+        p_scores = nullptr;
+
+    arrays initialized with dynamic arrays are different from arrays:
+        std::size does not work on them;
+        they don't support range based for loops 
+
