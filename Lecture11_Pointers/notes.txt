@@ -207,3 +207,22 @@ Dynamic arrays
         std::size does not work on them;
         they don't support range based for loops 
 
+
+REFERENCE
+    vartiable that we can use as if it was the originla variable
+
+        int& reference_to_int_value {int_value};
+
+    references vs pointers?
+        - References can't be changed
+        - Must be initialised at declaration
+        - Don't use dereferencing for reading and Writing
+        References can more or less be thought as const pointers
+
+        Reference are useful to modify data in a for loop
+
+            for(auto& score: scores){
+                score = score * 10;
+            }
+        in this way the scores are actually modified in the original array
+        
