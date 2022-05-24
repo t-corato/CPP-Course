@@ -1,0 +1,132 @@
+Character Manipulation
+    <cctype> library
+
+    std::isalnum -> if is alphanumeric return 1/0
+    std::isblank -> if char is blank
+    std::isdigit -> if char is digit
+    std::toupper -> puts char to uppercase
+    std::tolower -> puts char to lowercase
+
+c-strings
+<cstring>
+    std::strlen(string/char array) -> len of string, exluding null char
+    sizeof(string/char array) -> will include the null char
+
+    std::strcmp(string1, string2) -> will return 0 if the stings are the same
+                                     0 is generally considered false, so we need to check for that
+
+    std::strchr(string, target) -> finds the first occurrence of the target char in the string
+                                   if char is not present returns a nullptr
+
+    std::strcat(string1, string2) -> concatenate strings into the first one
+                                     issue -> need to make sure that the destination string is big enough
+
+    std::strncat(string1, string2, n) -> concatenate only the first n char of the second string
+
+    std::strcpy(destination, source) -> copies the source into the destination 
+                                         destination has to be big enough
+
+
+std::string
+    <string>
+    std::string is the type
+    can be initialised as usual or
+        std::string name_of_var {"text", n} -> takes only the first n char of text
+        std::string name_of_var2 (n, 'char') -> initalise as n times the char
+        std::string name_of_var3 ("text", n, m) -> takes m char starting from n to n+m
+    
+    concatenating strings 
+        std::string str1 {text};
+        std::string str2 {text};
+
+        std::string str12 = str1 + "other_text" + str2;
+        
+    is much easier to concatenate strings using + sing
+    
+    also possible to use append
+        str12 = str1.append(str2);
+
+        also possible to append 
+            str1.append(n, "char")
+            str1.append("text", n, m)
+
+    std::to_string -> converts other type to string 
+
+    convert char array to string
+        string name_of_string(array);
+
+
+    str.size() -> size of string
+
+    is possible to use a range base for loop
+
+        for(char value: str){
+            do stuff;
+        }
+    
+    str.at(index) ->  variant of str[index]
+    str.front() -> ref to beginning
+    str.back() -> ref to end of str
+
+    str.data() -> a pointer to the char array of the string
+
+    str.empty() -> true if str empty else false
+    str.length() -> same as size
+
+
+    modyfying std::string
+        str.clear() -> makes the str empty, but capacity remains the same
+        insert    
+            str.insert(n, m, text) -> insert the text from n m times
+            str.insert(text, n) -> insert text at index n
+            str.insert(n, text, m) -> insert the first m characters of text at index n of str
+            str`.insert(n, text, m, z) insert the characters from m to m + z of text at index n of str
+        erase
+            str.erase()
+        
+        str.push_back() -> add something to end of string
+        str.pop_back() -> remove something from end of string
+
+    comparing strings 
+        using == will check if they are the same and != if not
+
+        every other will compare them alphabetically (>, <, ...)
+
+        we can use std::string::compare() -> if equal we get a 0
+
+    str.replace(n, m, text) -> replace text in str from index n to index n+m with text
+    str1.copy(str2, n, m) -> copies from str1 into str2
+    str.resize(n) -> resizes string to n char
+    str1.swap(str2) -> swaps str1 and str2
+
+    str.find(text) -> returns the index of where the text is found in str
+                      if not there returns a garbage value
+                      we can use std::string::npos for this garbage value
+
+    str.find(text, n) -> same as abovebut will start the search at index n
+
+    string to num and viceversa
+        std::to_string -> num to str
+        std::stoi -> str to int 
+        std::stol -> str to long
+        std::stoll -> str to long long
+        and so on...
+
+    escape sequences
+    \t -> tab
+    \n -> new line
+    \" -> print a "
+
+    Raw string literals
+    if you write 
+    std::string str1 {R"(text)'};
+
+    it will consider it as raw and take care of the formatting by itself
+
+std::string_view -> we view the string literal istead of copying it
+
+        We can use .remove_prefix(n)
+        or         .remove_suffix(n)
+        to remove from the string view (not touching the original str)
+        string view cannot outlive the string that views
+        
